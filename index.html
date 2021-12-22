@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js Intro</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <!-- control absoluto de este div-->
+    <div id="myApp">
+        <h1>Batman quotes-<small>{{newQuote}}</small></h1>
+        <input
+         type="text"
+          v-model="newQuote"
+           v-on:keypress.enter="addQuote">
+           <!--El v-model captura lo q se escribe dentro
+        deñ input y se asigna su valor dentro del newQuote-->
+        <hr>
+        <ul> 
+            <!--Desestructurando, y elindex indica la posicion en el arreglo-->
+            <li v-for="({quote,author}, index) in quotes">
+            <span>{{ index+1 }}- {{quote}}</span>
+            <!-- El v-if omo un if evalua si existe y se muestra si cumple
+            la condicion-->
+            <!--<blockquote v-if="author">-{{author}}</blockquote>-->
+            <!--El v-show crea el elemento pero no lo muestra-->
+            <blockquote v-show="author">-{{author}}</blockquote>
+            </li>
+        </ul>
+    </div>
+    
+    <script src="./app.js"></script>
+</body>
+</html>
